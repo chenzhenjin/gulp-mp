@@ -1,0 +1,100 @@
+<view class='personal-container'>
+  <mp-navigation-bar title='京店联盟' back='{{false}}' background="white"></mp-navigation-bar>
+  <view class='personal-header'>
+    <image class='header-bg' src="/image/bg.png"></image>
+    <view class='personal-info' wx:if="{{ userInfo }}">
+      <open-data class="userImg" type="userAvatarUrl"></open-data>
+      <open-data class="userNickName" type="userNickName"></open-data>
+    </view>
+    <button wx:else class='personal-button' bindtap="GetUserInfoFn">注册</button>
+  </view>
+  <view class='personal-content clear' wx:if="{{ userInfo }}">
+    <view class='pull-left'>
+      <view>
+        <text class='title'>可提现金额（每月2日结算上个自然日收益）</text>
+      </view>
+      <view class='moneyInfo'>
+        <text class='bold'>￥<text class='fs-60'>{{ userMoney || 0 }}</text></text>
+      </view>
+    </view>
+    <form report-submit='true' bindsubmit="formSubmit">
+      <button form-type='submit' class='pull-right putForward' catchtap='forwardFn'>
+        <text class='ForwardText'>去提现</text>
+        <image class='path' src='/image/path.png'></image>
+      </button>
+    </form>
+  </view>
+  <view class='personal-reward' wx:if="{{ userInfo }}">
+    <view>
+      <view class="project-reward">
+        <text>京店宝</text>
+      </view>
+      <view>
+        <view>
+          <text class="grey-text">本月累计成交金额</text>
+        </view>
+        <text class="fs-36 bold">￥{{ userInfo.thisMonthMoney || 0 }}</text>
+      </view>
+      <view>
+        <view>
+          <text class="grey-text">累计成交金额</text>
+          <text catchtap="goHistorical" data-name="jdb" class='pull-right mr-20 blue'>明细</text>
+        </view>
+        <text class="fs-36 bold">￥{{ userInfo.tradingMoney || 0 }}</text>
+      </view>
+    </view>
+    <view>
+      <view class="project-reward">
+        <text>店长管家</text>
+      </view>
+      <view>
+        <view>
+          <text class="grey-text">本月累计成交金额</text>
+        </view>
+        <text class="fs-36 bold">￥{{ userInfo.dzgjThisMonthMoney || 0 }}</text>
+      </view>
+      <view>
+        <view>
+          <text class="grey-text">累计成交金额</text>
+          <text catchtap="goHistorical" data-name="dzgj" class='pull-right mr-20 blue'>明细</text>
+        </view>
+        <text class="fs-36 bold">￥{{ userInfo.dzgjTradingMoney || 0 }}</text>
+      </view>
+    </view>
+  </view>
+  <form report-submit='true' bindsubmit="formSubmit" wx:if="{{ userInfo }}">
+    <button class='customerBtn' form-type='submit' catchtap='customerFn'>
+      <image class='customerImg pull-left' src="/image/CustomerIcon.png"></image>
+      <text class='pull-left'>客户管理</text>
+      <view class='tright'>
+        <image class='path' src='/image/path.png'></image>
+      </view>
+    </button>
+  </form>
+  <button class='customerBtn' wx:if="{{ userInfo }}" bind:tap="downLevelFn">
+    <image class='customerImg pull-left' src="/image/downLevel.png"></image>
+    <text class='pull-left'>下级联盟管理</text>
+    <view class='tright'>
+      <image class='path' src='/image/path.png'></image>
+    </view>
+  </button>
+  <!-- <form report-submit='true' bindsubmit="formSubmit" wx:if="{{ userInfo }}">
+    <button class='customerBtn' form-type='submit' catchtap='messageFn'>
+      <image class='customerImg pull-left' src="/image/message.png"></image>
+      <text class='pull-left'>通知</text>
+      <text wx:if="{{ notice }}" class="notice"></text>
+      <view class='tright'>
+        <image class='path' src='/image/path.png'></image>
+      </view>
+    </button>
+  </form> -->
+  <form report-submit='true' bindsubmit="formSubmit">
+    <button class='customerBtn' form-type='submit' open-type="contact" session-from='weapp'>
+      <image class='customerImg pull-left' src="/image/customer.png"></image>
+      <text class='pull-left'>联系联盟顾问</text>
+      <view class='tright'>
+        <image class='path' src='/image/path.png'></image>
+      </view>
+    </button>
+  </form>
+</view>

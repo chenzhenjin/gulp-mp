@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/order/order",
+    "pages/personal/personal",
+    "pages/register/register",
+    "pages/putForward/putForward",
+    "pages/message/message",
+    "pages/historical/historical",
+    "pages/customer/customer",
+    "pages/downLevel/downLevel",
+    "pages/customerVolume/customerVolume",
+    "pages/chargeDetail/chargeDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "京店联盟",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#f30213",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/home-notActive.png",
+        "selectedIconPath": "/image/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "/image/order-notActive.png",
+        "selectedIconPath": "/image/order-active.png",
+        "text": "订单明细"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "/image/my-notActive.png",
+        "selectedIconPath": "/image/my-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "connectSocket": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "usingComponents": {
+    "mp-loading": "weui-miniprogram/loading/loading",
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+  }
+}
